@@ -65,7 +65,7 @@ class ScoreBoard(var plugin: ShigenPlus) {
                     space2.score = 10
 
                     val allBroken = objective!!.getScore("${ChatColor.GREEN}${ChatColor.BOLD}総採掘量 " +
-                            "${ChatColor.YELLOW}${ChatColor.BOLD}: ${ChatColor.WHITE}${ChatColor.BOLD}${rankData(player).allBroken} ブロック")
+                            "${ChatColor.YELLOW}${ChatColor.BOLD}: ${ChatColor.WHITE}${ChatColor.BOLD}${rankData(player).allBroken}")
                     allBroken.score = 9
 
                     val space3 = objective!!.getScore("   ")
@@ -73,18 +73,18 @@ class ScoreBoard(var plugin: ShigenPlus) {
 
                     if (rankData(player).allBroken > 10_000_000) {
                         val remainRank = objective!!.getScore("${ChatColor.GREEN}${ChatColor.BOLD}int最大値まで "+
-                                "${ChatColor.YELLOW}${ChatColor.BOLD}: ${ChatColor.WHITE}${ChatColor.BOLD}${rankData(player).remainRank} ブロック")
+                                "${ChatColor.YELLOW}${ChatColor.BOLD}: ${ChatColor.WHITE}${ChatColor.BOLD}${rankData(player).remainRank}")
                         remainRank.score = 7
                     } else {
                         val remainRank = objective!!.getScore("${ChatColor.GREEN}${ChatColor.BOLD}次のランクまで " +
-                                "${ChatColor.YELLOW}${ChatColor.BOLD}: ${ChatColor.WHITE}${ChatColor.BOLD}${rankData(player).remainRank} ブロック")
+                                "${ChatColor.YELLOW}${ChatColor.BOLD}: ${ChatColor.WHITE}${ChatColor.BOLD}${rankData(player).remainRank}")
                         remainRank.score = 7
                     }
 
                     player.scoreboard = scoreboard!!
                 }
             }
-        }.runTaskTimer(plugin,0, 20)
+        }.runTaskTimer(plugin,0, plugin.config.getLong("update_speed"))
     }
 
     fun rankData(player: Player): PlayerData {

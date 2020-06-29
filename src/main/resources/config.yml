@@ -1,0 +1,12 @@
+############
+#ShigenPlus#
+############
+
+sound: BLOCK_BEACON_ACTIVATE
+#sound: ツールが壊れる前になる音を設定します。
+#       音の正式名称を入れてください。
+#       詳しくはhttps://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.htmlで確認してください。
+
+update_speed: 100
+#update_speed: スコアボードを更新する間隔を指定します。
+#              Tickで指定。20ricks = 1秒

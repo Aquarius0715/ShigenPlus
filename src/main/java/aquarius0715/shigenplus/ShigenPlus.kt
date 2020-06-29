@@ -12,6 +12,7 @@ class ShigenPlus : JavaPlugin() {
 
     var pluginStats = true
     var ScoreBoard: ScoreBoard = ScoreBoard(this)
+    var SoundData: SoundData = SoundData(this)
 
     var prefix: String = "${"" +  ChatColor.WHITE + ChatColor.BOLD}[" +
             "${"" + ChatColor.DARK_GREEN + ChatColor.BOLD}Shigen" +
@@ -21,8 +22,10 @@ class ShigenPlus : JavaPlugin() {
     val scoreboardStats = mutableMapOf<UUID, Boolean>()
 
     override fun onEnable() {
+        this.saveDefaultConfig()
         val statz = Bukkit.getServer().pluginManager.getPlugin("Statz")
         Objects.requireNonNull(getCommand("sp"))!!.setExecutor(Commands(this))
+        server.pluginManager.registerEvents(Events(this), this)
         if (statz != null && statz.isEnabled) {
             api = API(statz as Statz?)
         }
