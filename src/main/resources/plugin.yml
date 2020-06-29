@@ -1,0 +1,7 @@
+name: ShigenPlus
+version: 1.0.0
+main: aquarius0715.shigenplus.ShigenPlus
+api-version: 1.13
+commands:
+  sp:
+depend: [Statz]
