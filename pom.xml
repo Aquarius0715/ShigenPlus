@@ -123,15 +123,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-        <dependency>
             <groupId>me.staartvin.statz</groupId>
-            <artifactId>Statz-1.5.5</artifactId>
-            <version>1.5.5</version>
-            <scope>provided</scope>
+            <artifactId>Statz-1.6</artifactId>
+            <version>1.6</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/libs/Statz-1.6.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

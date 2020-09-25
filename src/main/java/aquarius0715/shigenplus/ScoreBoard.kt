@@ -41,24 +41,58 @@ class ScoreBoard(var plugin: ShigenPlus) {
                 for (player in Bukkit.getOnlinePlayers()) {
 
                     if (!plugin.scoreboardStats[player.uniqueId]!!) {
-                        player.scoreboard = (Bukkit.getScoreboardManager().newScoreboard)
-                        return
+                        continue
                     }
 
-                    val playerName = objective!!.getScore("${ChatColor.GOLD}${ChatColor.BOLD}${player.displayName}さんこんにちは！")
-                    playerName.score = 14
+                    if (plugin.locationStats[player.uniqueId]!!) {
 
-                    val space = objective!!.getScore(" ")
-                    space.score = 13
+                        val space4 = objective!!.getScore("    ")
+                        space4.score = 14
 
-                    val rank = objective!!.getScore("${ChatColor.GREEN}ランク 　  : ${rankData(player).rank}")
-                    rank.score = 11
+                        val location = objective!!.getScore("座標   : X:${player.location.x} Y:${player.location.y} Z:${player.location.z}")
+                        location.score = 13
 
-                    val allBroken = objective!!.getScore("${ChatColor.GREEN}総採掘量     : ${rankData(player).allBroken}")
-                    allBroken.score = 10
+                    }
 
-                    val remainRank = objective!!.getScore("${ChatColor.GREEN}次のランクまで : ${rankData(player).remainRank}")
-                    remainRank.score = 9
+                    if (plugin.rankStats[player.uniqueId]!!) {
+
+                        val space = objective!!.getScore(" ")
+                        space.score = 12
+
+                        val rank = objective!!.getScore("${ChatColor.GREEN}ランク   : ${rankData(player).rank}")
+                        rank.score = 11
+
+                    }
+
+                    if (plugin.nextRankStats[player.uniqueId]!!) {
+
+                        val space2 = objective!!.getScore("  ")
+                        space2.score = 10
+
+                        if (rankData(player).allBroken < 10000000.0) {
+
+                            val remainRank = objective!!.getScore("${ChatColor.GREEN}次まで   : ${rankData(player).remainRank}")
+                            remainRank.score = 9
+
+                        } else {
+
+                            val remainRank = objective!!.getScore("${ChatColor.GREEN}32bitまで: ${rankData(player).remainRank}")
+                            remainRank.score = 9
+
+                        }
+
+                    }
+
+                    if (plugin.allMinedStats[player.uniqueId]!!) {
+
+                        val space3 = objective!!.getScore("   ")
+                        space3.score = 8
+
+                        val allBroken = objective!!.getScore("${ChatColor.GREEN}総採掘量 : ${rankData(player).allBroken}")
+                        allBroken.score = 7
+
+                    }
+
                 }
             }
         }.runTaskTimer(plugin,0, 20)
