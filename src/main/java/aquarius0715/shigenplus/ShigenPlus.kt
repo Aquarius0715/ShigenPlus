@@ -17,23 +17,31 @@ class ShigenPlus : JavaPlugin() {
             "${"" + ChatColor.GREEN + ChatColor.BOLD}Plus" +
             "${"" + ChatColor.WHITE + ChatColor.BOLD}]"
 
-    val scoreboardStats = mutableMapOf<UUID, Boolean>()
-    val locationStats = mutableMapOf<UUID, Boolean>()
-    val rankStats = mutableMapOf<UUID, Boolean>()
-    val nextRankStats = mutableMapOf<UUID, Boolean>()
-    val allMinedStats = mutableMapOf<UUID, Boolean>()
+    val stats = mutableMapOf<UUID, Stats>()
 
     var scoreBoard: ScoreBoard = ScoreBoard(this)
+    var gui = GUI(this)
+
+    class Stats(var scoreboard: Boolean,
+                var location: Boolean,
+                var rank: Boolean,
+                var nextRank: Boolean,
+                var allMined: Boolean,
+                var noticeDisplay: Boolean,
+                var notice: Boolean,
+                var space: Boolean)
 
     override fun onEnable() {
         val statz = Bukkit.getServer().pluginManager.getPlugin("Statz")
         Objects.requireNonNull(getCommand("sp"))!!.setExecutor(Commands(this))
         server.pluginManager.registerEvents(Events(this), this)
+        server.pluginManager.registerEvents(GUI(this), this)
         if (statz != null && statz.isEnabled) {
             api = API(statz as Statz?)
         }
         scoreBoard.createScoreBoard()
         scoreBoard.updateScoreBoard()
+
     }
 
     override fun onDisable() {

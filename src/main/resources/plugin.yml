@@ -1,4 +1,7 @@
 name: ShigenPlus
 version: ${project.version}
 main: aquarius0715.shigenplus.ShigenPlus
-api-version: 1.15.2
+api-version: 1.13
+softdepend: [Statz]
+commands:
+  sp:
