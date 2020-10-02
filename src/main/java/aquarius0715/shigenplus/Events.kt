@@ -6,6 +6,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Sound
+import org.bukkit.block.Chest
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -71,6 +72,12 @@ class Events(val plugin: ShigenPlus): Listener {
             player.playSound(player.location, Sound.ENTITY_ARROW_HIT_PLAYER, 8.0F, 0.0F)
 
         }
+
+    }
+
+    fun getItemName() {
+
+        return
 
     }
 
