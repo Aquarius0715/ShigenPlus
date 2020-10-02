@@ -52,7 +52,7 @@ class Events(val plugin: ShigenPlus): Listener {
             val component = TextComponent()
 
             component.text = "${ChatColor.GRAY}${ChatColor.BOLD}(ツール名: " +
-                    event.item.i18NDisplayName +
+                    getItemName(event.item) +
                     " / 最大耐久値: $maxDurability" +
                     " / ${ChatColor.YELLOW}${ChatColor.BOLD}現在の耐久値: $nowDurability" +
                     "${ChatColor.GRAY}${ChatColor.BOLD})"
@@ -63,7 +63,7 @@ class Events(val plugin: ShigenPlus): Listener {
             val component = TextComponent()
 
             component.text = "${ChatColor.GRAY}${ChatColor.BOLD}(ツール名: " +
-                    event.item.i18NDisplayName +
+                    getItemName(event.item) +
                     " / 最大耐久値: $maxDurability" +
                     " / ${ChatColor.DARK_RED}${ChatColor.BOLD}現在の耐久値: $nowDurability" +
                     "${ChatColor.GRAY}${ChatColor.BOLD})"
@@ -75,9 +75,17 @@ class Events(val plugin: ShigenPlus): Listener {
 
     }
 
-    fun getItemName() {
+    fun getItemName(itemStack: ItemStack): String? {
 
-        return
+        if (itemStack.itemMeta.hasDisplayName()) {
+
+            return itemStack.itemMeta.displayName
+
+        } else {
+
+            return itemStack.i18NDisplayName
+
+        }
 
     }
 
