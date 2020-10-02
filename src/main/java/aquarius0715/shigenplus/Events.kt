@@ -3,13 +3,16 @@ package aquarius0715.shigenplus
 import net.md_5.bungee.api.ChatColor
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Sound
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerItemDamageEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.inventory.ItemStack
+import kotlin.random.Random
 
 class Events(val plugin: ShigenPlus): Listener {
 
@@ -66,32 +69,6 @@ class Events(val plugin: ShigenPlus): Listener {
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, component)
 
             player.playSound(player.location, Sound.ENTITY_ARROW_HIT_PLAYER, 8.0F, 0.0F)
-
-        }
-
-    }
-
-    fun getItemName(itemStack: ItemStack): String {
-
-        if (itemStack.itemMeta.hasDisplayName()) {
-
-            return itemStack.itemMeta.displayName
-
-        } else {
-
-            return when (itemStack.type) {
-
-                Material.IRON_SHOVEL -> "鉄のシャベル"
-                Material.IRON_PICKAXE -> "鉄のツルハシ"
-                Material.IRON_AXE -> "鉄の斧"
-                Material.FLINT_AND_STEEL -> "火打石と打ち金"
-                Material.WOODEN_SHOVEL -> "木のシャベル"
-                Material.WOODEN_PICKAXE -> "木のツルハシ"
-                Material.WOODEN_AXE -> "木の斧"
-                Material.STONE_SHOVEL -> "石のシャベル"
-                else -> "UNKNOWN"
-
-            }
 
         }
 
